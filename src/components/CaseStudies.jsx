@@ -1,6 +1,8 @@
 import image1 from "../img/casestudies1.png";
 import image2 from "../img/casestudies2.png";
-
+import { Link } from "react-router-dom";
+import { MoveUpRight } from 'lucide-react';
+ 
 const caseStudies = [
   {
     image: image2,
@@ -23,52 +25,53 @@ const caseStudies = [
     ],
   },
 ];
-
+ 
 export default function CaseStudies() {
   return (
     <section className="py-24 bg-[#0F1E2F]">
       <div className="max-w-6xl mx-auto px-6 text-center">
-
+ 
         <h2 className="text-4xl font-semibold text-white mb-3">
           Customer Success Stories
         </h2>
-
+ 
         <p className="text-white mb-14">
           See how OTAs and suppliers grow their transfer operations with TransitHub.
         </p>
-
+ 
         <div className="flex justify-center gap-12">
-
+ 
           {caseStudies.map((card, i) => (
+             <Link to="/case-study" key={i} onClick={() => window.scrollTo(0, 0)}>
             <div
-              key={i}
+             
               className="rounded-2xl overflow-hidden w-[503px]"
               style={{ background: "#202F3E", border: "1px solid #1e293b" }}
             >
-
+ 
               {/* Image */}
               <img
                 src={card.image}
                 alt=""
                 className="h-[303px] w-full object-cover"
               />
-
+ 
               <div className="p-8 text-left">
-
+ 
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-white text-2xl font-medium leading-snug max-w-[80%]">
                     {card.title}
                   </h3>
-
+ 
                   <div className="w-9 h-9 rounded-full flex items-center justify-center bg-[#1e293b] text-white">
-                    ↗
+                      <MoveUpRight />
                   </div>
                 </div>
-
+ 
                 <p className="text-gray-400 text-base mb-6 whitespace-pre-line">
                   {card.desc}
                 </p>
-
+ 
                 <div className="flex flex-wrap gap-4 max-w-[300px]">
                   {card.tags.map((tag, index) => (
                     <span
@@ -80,11 +83,12 @@ export default function CaseStudies() {
                     </span>
                   ))}
                 </div>
-
+ 
               </div>
             </div>
+            </Link>
           ))}
-
+ 
         </div>
       </div>
     </section>

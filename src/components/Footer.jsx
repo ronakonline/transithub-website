@@ -2,7 +2,7 @@ import { useState } from "react";
 import logo from "../img/Logo.png";
 import emailIcon from "../img/Icon11.png";
 import { Link } from "react-router-dom";
-
+ 
 const footerLinks = [
   {
     heading: "Product",
@@ -10,24 +10,24 @@ const footerLinks = [
   },
   {
     heading: "Company",
-    links: ["About", "Case studies", "Careers", "Contact"],
+    links: ["About", "Case studies",],
   },
   {
     heading: "Legal",
     links: ["Privacy", "Terms", "Security"],
   },
 ];
-
+ 
 export default function Footer() {
   const [email, setEmail] = useState("");
-
+ 
   return (
     <footer className="bg-[#0F1E2F] pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-10">
-
+ 
         {/* ── Top row ── */}
         <div className="flex flex-row gap-16 mb-14">
-
+ 
           {/* Brand + emails */}
           <div className="w-56 flex-shrink-0">
             <img src={logo} alt="TransitHub" className="h-8 w-auto object-contain mb-10" />
@@ -42,7 +42,7 @@ export default function Footer() {
               </div> */}
             </div>
           </div>
-
+ 
           {/* Link columns */}
           <div className="flex flex-row gap-16 flex-1">
             {footerLinks.map((col) => (
@@ -55,13 +55,13 @@ export default function Footer() {
                           <a href="#features" className="transition-colors hidden" style={{ color: "rgba(255,255,255,0.8)" }}>
                             {l}
                           </a>
-
+ 
                         ) : l === "Pricing" ? (
                           <a href="#pricing" className="transition-colors hidden" style={{ color: "rgba(255,255,255,0.8)" }}>
                             {l}
                           </a>
-
-                        ) : l === "OTA Integration" ? (
+ 
+                     ) : l === "OTA Integration" ? (
                           <Link
                             to="/ota"
                             onClick={() => window.scrollTo(0, 0)}
@@ -71,6 +71,17 @@ export default function Footer() {
                             {l}
                           </Link>
 
+                        ) : l === "API Docs" ? (
+                          <a
+                            href="https://documenter.getpostman.com/view/20610710/2sBXcLecc6"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="transition-colors"
+                            style={{ color: "rgba(255,255,255,0.8)" }}
+                          >
+                            {l}
+                          </a>
+                        
                         ) : l === "Privacy" ? (
                           <Link
                             to="/privacy"
@@ -80,7 +91,7 @@ export default function Footer() {
                           >
                             {l}
                           </Link>
-
+ 
                         ) : l === "Terms" ? (
                           <Link
                             to="/terms"
@@ -90,7 +101,7 @@ export default function Footer() {
                           >
                             {l}
                           </Link>
-
+ 
                        ) : l === "Security" ? (
                         <Link
                           to="/security"
@@ -100,7 +111,7 @@ export default function Footer() {
                         >
                           {l}
                         </Link>
-
+ 
                       ) : l === "Case studies" ? (
                         <Link
                           to="/case-study"
@@ -110,7 +121,7 @@ export default function Footer() {
                         >
                           {l}
                         </Link>
-
+ 
                       ) : l === "About" ? (
                         <Link
                           to="/about"
@@ -120,7 +131,7 @@ export default function Footer() {
                         >
                           {l}
                         </Link>
-
+ 
                         ) : (
                           <a href="#" className="transition-colors" style={{ color: "rgba(255,255,255,0.8)" }}>
                             {l}
@@ -132,7 +143,7 @@ export default function Footer() {
               </div>
             ))}
           </div>
-
+ 
        {/* Newsletter */}
       <div className="flex-shrink-0 w-[320px]">
         <h4 className="text-[#A3E635] font-medium text-lg mb-2 tracking-wider">Be First to Know!</h4>
@@ -152,14 +163,14 @@ export default function Footer() {
           </button>
         </div>
       </div>
-
+ 
         </div>
-
+ 
         {/* ── Bottom bar ── */}
         <div className="border-t border-gray-800 pt-6 text-sm" style={{color:"rgba(229, 231, 235, 0.7)"}}>
           <span>© 2026 TransitHub. All rights reserved.</span>
         </div>
-
+ 
       </div>
     </footer>
   );

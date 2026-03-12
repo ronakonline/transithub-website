@@ -46,7 +46,7 @@ export default function ComparisonTable() {
 
         {/* Title */}
         <h2
-          className="text-center text-white font-medium mb-24"
+          className="text-center text-white font-semibold mb-24"
           style={{ fontSize: "2.6rem", letterSpacing: "-0.02em", lineHeight: 1.2 }}
         >
           Traditional Integrations vs Transit<span style={{ color: "#A3DE23" }}>Hub</span>

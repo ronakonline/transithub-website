@@ -1,7 +1,9 @@
 import React from 'react';
+import image1 from "../img/casestudies1.png";
+import image2 from "../img/casestudies2.png";
 import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp, Users, Clock, MapPin } from 'lucide-react';
-
+ 
 export default function CaseStudiesPage() {
   const caseStudies = [
     {
@@ -9,7 +11,7 @@ export default function CaseStudiesPage() {
       title: 'Global OTA Scales to 200+ Suppliers in 30 Days',
       category: 'OTA Success Story',
       excerpt: 'How a leading OTA onboarded 200+ offline suppliers and DMCs with complex pricing across thousands of routes in just one month.',
-      image: 'https://images.pexels.com/photos/1262304/pexels-photo-1262304.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      image: image2,
       metrics: [
         { label: 'Suppliers Onboarded', value: '200+' },
         { label: 'Time to Live', value: '30 Days' },
@@ -22,7 +24,7 @@ export default function CaseStudiesPage() {
       title: 'Italian DMC Manages 2,000 Routes with 50 Rules',
       category: 'Supplier Success Story',
       excerpt: 'How a premier Italian ground transportation provider simplified complex terrain-based pricing and went live in one week.',
-      image: 'https://images.pexels.com/photos/2064123/pexels-photo-2064123.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      image: image1,
       metrics: [
         { label: 'Routes Managed', value: '2,000' },
         { label: 'Pricing Rules', value: '50' },
@@ -31,7 +33,7 @@ export default function CaseStudiesPage() {
       tags: ['DMC', 'Inventory Management', 'Pricing Engine']
     }
   ];
-
+ 
   return (
     <div className="min-h-screen bg-white mt-10">
       <div className="bg-gradient-to-br from-emerald-50 via-teal-50 to-white py-20 px-4 sm:px-6 lg:px-8">
@@ -51,7 +53,7 @@ export default function CaseStudiesPage() {
           </p>
         </div>
       </div>
-
+ 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid md:grid-cols-2 gap-8">
           {caseStudies.map((study) => (
@@ -72,7 +74,7 @@ export default function CaseStudiesPage() {
                   </span>
                 </div>
               </div>
-
+ 
               <div className="p-8">
                 <h2 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-[#0F1E2F] transition-colors">
                   {study.title}
@@ -80,7 +82,7 @@ export default function CaseStudiesPage() {
                 <p className="text-slate-600 mb-6">
                   {study.excerpt}
                 </p>
-
+ 
                 <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-slate-200">
                   {study.metrics.map((metric, idx) => (
                     <div key={idx} className="text-center">
@@ -89,7 +91,7 @@ export default function CaseStudiesPage() {
                     </div>
                   ))}
                 </div>
-
+ 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {study.tags.map((tag, idx) => (
                     <span
@@ -100,7 +102,7 @@ export default function CaseStudiesPage() {
                     </span>
                   ))}
                 </div>
-
+ 
                 <div className="flex items-center text-[#0F1E2F] font-semibold group-hover:gap-3 gap-2 transition-all">
                   Read Full Story
                   <ArrowRight className="w-5 h-5" />
@@ -109,7 +111,7 @@ export default function CaseStudiesPage() {
             </Link>
           ))}
         </div>
-
+ 
         <div className="mt-16 bg-[#0F1E2F] rounded-2xl p-12 text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Write Your Success Story?
@@ -125,3 +127,4 @@ export default function CaseStudiesPage() {
     </div>
   );
 }
+ 

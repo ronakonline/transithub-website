@@ -6,29 +6,30 @@ import img1 from "../img/Feature2.png";
 import img2 from "../img/Feature4.png";
 import img3 from "../img/FeatureOTA1.png";
 import img4 from "../img/FeatureOTA2.png";
+import { MoveRight } from "lucide-react";
 
 const features = [
   {
     title: "Scalable Infrastructure",
-    desc: "Handle high booking volumes with fast and reliable API performance.",
+    desc: "Handle high volumes of transfer searches and\n bookings with infrastructure built for reliability,\n fast API performance, and consistent availability\n across your entire platform.",
     image: img4,
     icon: icon1,
   },
   {
     title: "Real-time fleet & availability",
-    desc: "Live visibility into every vehicle, driver status, and capacity - updated instantly across your entire operation.",
+    desc: "Access live availability, vehicle capacity, and\n supplier inventory updates so customers always\n see accurate transfer options and real-time\n booking confirmation.",
     image: img1,
     icon: icon2,
   },
   {
     title: "Unified Supplier API",
-    desc: "Integrate once and connect to multiple transfer providers globally.",
+    desc: "Integrate once and instantly connect to multiple\n transfer suppliers worldwide, simplifying\n integrations while expanding your available\n inventory across cities and regions.",
     image: img2,
     icon: icon3,
   },
   {
     title: "Business Analytics & Intelligence",
-    desc: "Connect to global OTAs with our robust API. Distribute inventory worldwide seamlessly.",
+    desc: "Gain powerful insights into booking\n performance, supplier activity, and demand\n trends to optimize pricing strategies and grow\n your transfer business efficiently.",
     image: img3,
     icon: icon4,
   },
@@ -72,9 +73,20 @@ export default function OTAFeatures() {
                   {feature.title}
                 </h3>
 
-                <p className="text-slate-300 leading-relaxed">
+                <p className="text-slate-300 leading-relaxed whitespace-pre-line">
                   {feature.desc}
                 </p>
+                 <div  onClick={() =>
+                    window.open(
+                      "https://mail.google.com/mail/?view=cm&to=info@transithub.io",
+                      "_blank",
+                      "noopener,noreferrer"
+                    )
+                  }
+              className="text-[#A3DE23] mt-10 flex gap-x-2 cursor-pointer">
+                  <span>Talk to Us</span> 
+                  <MoveRight />
+                </div>
               </div>
 
               {/* Image */}

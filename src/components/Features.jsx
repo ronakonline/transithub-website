@@ -4,6 +4,9 @@ import icon2 from "../img/Feature_Icon2.png";
 import icon3 from "../img/Feature_Icon3.png";
 import icon4 from "../img/Feature_Icon4.png";
 import icon5 from "../img/Feature_Icon5.png";
+import { MoveRight } from 'lucide-react';
+import { useState,useEffect } from "react";
+import SignupModal from "./SignupModal";
 
 // ── Feature images ───────────────────────────────────────
 import imgFleet from "../img/Feature1.png";
@@ -16,36 +19,49 @@ const features = [
   {
     icon: icon1,
     title: "Real-time fleet & availability",
-    desc: "Live visibility into every vehicle, driver status, and capacity – updated instantly across your entire operation.",
+    desc: "Get complete real-time visibility into your fleet,\n vehicle availability, and driver status so your\n team always knows exactly which vehicles are\n ready for the next booking",
     image: imgFleet,
   },
   {
     icon: icon2,
     title: "Smart auto-dispatch",
-    desc: "AI-powered assignment matches the right vehicle to each booking based on location, vehicle type, and driver availability.",
+    desc: "Automatically assign the most suitable vehicle to\n every booking using intelligent auto-dispatch \nbased on location, vehicle type, availability, and\n operational rules",
     image: imgDispatch,
   },
   {
     icon: icon3,
     title: "Dynamic pricing engine",
-    desc: "Set rules once, price intelligently forever. Distance-based, time-based, surge pricing, corporate rates – all automated.",
+    desc: "Configure powerful pricing rules and \nautomatically calculate transfer fares based on\n distance, time, route complexity, surge demand,\n and custom pricing logic",
     image: imgPricing,
   },
   {
     icon: icon4,
     title: "OTA Integration",
-    desc: "Connect to global OTAs with our robust API. Distribute inventory worldwide seamlessly.",
+    desc: "Connect your transfer inventory to global online\n travel agencies through a unified API and\n distribute real-time availability, pricing, and\n bookings across multiple platforms.",
     image: imgOTA,
   },
   {
     icon: icon5,
     title: "Centralized booking calendar",
-    desc: "One unified view of all bookings from every channel. No conflicts, no double-checking, no chaos.",
+    desc: "Manage and track all bookings from every sales\n channel in one centralized calendar view, helping\n your operations team avoid conflicts and stay \nfully organized",
     image: imgCalendar,
   },
 ];
 
 export default function Features() {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+    document.body.classList.add("modal-open");
+    document.documentElement.classList.add("modal-open"); // html element
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    document.body.classList.remove("modal-open");
+    document.documentElement.classList.remove("modal-open"); // html element
+  };
   return (
     <section id="features" className="w-full bg-[#0F1E2F]">
       <div className="max-w-[1300px] mx-auto px-20">
@@ -83,9 +99,13 @@ export default function Features() {
                   {feature.title}
                 </h3>
 
-                <p className="text-slate-300 leading-relaxed">
+                <p className="text-slate-300 leading-relaxed whitespace-pre-line">
                   {feature.desc}
                 </p>
+                <div onClick={openModal} className="text-[#A3DE23] mt-10 flex gap-x-2 cursor-pointer">
+                  <span>Get Started</span> 
+                  <MoveRight />
+                </div>
               </div>
 
               {/* Image */}
@@ -102,6 +122,7 @@ export default function Features() {
 
         </div>
       </div>
+        {showModal && <SignupModal  onClose={closeModal}/>}
     </section>
   );
 }

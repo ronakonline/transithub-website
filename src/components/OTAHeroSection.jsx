@@ -55,13 +55,19 @@ export default function OTAHeroSection() {
           onClick={() =>
             window.open(
               "https://mail.google.com/mail/?view=cm&to=info@transithub.io",
-              "_blank"
+              "_blank",
+               "noopener,noreferrer"
             )
           }
             className="px-6 py-3 rounded-xl text-sm bg-[#A3E635] text-[#101828] transition-all hover:scale-105 active:scale-95">
             Talk to Us
           </button>
-            <button  onClick={() => navigate('/demo')} className="px-6 py-3 rounded-xl  text-sm bg-white text-[#101828] transition-all">
+            <button  onClick={() =>  window.open(
+              "https://documenter.getpostman.com/view/20610710/2sBXcLecc6",
+              "_blank",
+               "noopener,noreferrer"
+            )} 
+            className="px-6 py-3 rounded-xl  text-sm bg-white text-[#101828] transition-all">
              View Documentation
             </button>
           </div>
