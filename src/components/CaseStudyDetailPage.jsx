@@ -1,15 +1,17 @@
 import React from 'react';
+import image1 from "../img/casestudies1.png";
+import image2 from "../img/casestudies2.png";
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, TrendingUp, Users, Clock, DollarSign, Target, CheckCircle2, Quote } from 'lucide-react';
-
+ 
 export default function CaseStudyDetailPage() {
   const { id } = useParams();
-
+ 
   const caseStudies = {
     'global-ota-expansion': {
       title: 'Global OTA Scales to 200+ Suppliers in 30 Days',
       category: 'OTA Success Story',
-      image: 'https://images.pexels.com/photos/1262304/pexels-photo-1262304.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      image: image2,
       client: {
         name: 'Leading European OTA',
         industry: 'Online Travel Agency',
@@ -117,7 +119,7 @@ export default function CaseStudyDetailPage() {
     'italy-supplier-transformation': {
       title: 'Italian DMC Manages 2,000 Routes with 50 Rules',
       category: 'Supplier Success Story',
-      image: 'https://images.pexels.com/photos/2064123/pexels-photo-2064123.jpeg?auto=compress&cs=tinysrgb&w=1200',
+      image: image1,
       client: {
         name: 'Premier Italian Ground Transportation Provider',
         industry: 'Destination Management Company',
@@ -223,9 +225,9 @@ export default function CaseStudyDetailPage() {
       }
     }
   };
-
+ 
   const study = caseStudies[id || ''];
-
+ 
   if (!study) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
@@ -238,7 +240,7 @@ export default function CaseStudyDetailPage() {
       </div>
     );
   }
-
+ 
   return (
     <div className="min-h-screen bg-white">
       <div className="relative h-96 overflow-hidden">
@@ -266,7 +268,7 @@ export default function CaseStudyDetailPage() {
           </div>
         </div>
       </div>
-
+ 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid lg:grid-cols-4 gap-12 mb-16">
           <div className="lg:col-span-1">
@@ -292,7 +294,7 @@ export default function CaseStudyDetailPage() {
               </div>
             </div>
           </div>
-
+ 
           <div className="lg:col-span-3 space-y-16">
             <section>
               <h2 className="text-3xl font-bold text-slate-900 mb-6">{study.challenge.title}</h2>
@@ -311,7 +313,7 @@ export default function CaseStudyDetailPage() {
                 </ul>
               </div>
             </section>
-
+ 
             <section>
               <h2 className="text-3xl font-bold text-slate-900 mb-6">{study.solution.title}</h2>
               <p className="text-lg text-slate-600 mb-8">
@@ -326,13 +328,13 @@ export default function CaseStudyDetailPage() {
                 ))}
               </div>
             </section>
-
+ 
             <section>
               <h2 className="text-3xl font-bold text-slate-900 mb-6">{study.results.title}</h2>
               <p className="text-lg text-slate-600 mb-8">
                 {study.results.description}
               </p>
-
+ 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {study.results.metrics.map((metric, idx) => {
                   const Icon = metric.icon;
@@ -348,7 +350,7 @@ export default function CaseStudyDetailPage() {
                   );
                 })}
               </div>
-
+ 
               <div className="bg-slate-50 rounded-xl p-8 border border-slate-200">
                 <h3 className="font-semibold text-slate-900 mb-6 text-xl">Operational Impact</h3>
                 <div className="grid md:grid-cols-2 gap-4">
@@ -361,7 +363,7 @@ export default function CaseStudyDetailPage() {
                 </div>
               </div>
             </section>
-
+ 
             <section className="bg-gray-300 rounded-2xl p-8 md:p-12 text-[#0F1E2F] relative overflow-hidden">
               <Quote className="absolute top-8 right-8 w-24 h-24 text-white/10" />
               <div className="relative">
@@ -377,7 +379,7 @@ export default function CaseStudyDetailPage() {
             </section>
           </div>
         </div>
-
+ 
         <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-12 text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Transform Your Business?
@@ -391,6 +393,7 @@ export default function CaseStudyDetailPage() {
             </Link>
             <Link
               to="/case-study"
+              onClick={() => window.scrollTo(0, 0)}
               className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold text-lg hover:bg-white hover:text-slate-900 transition-all duration-300 inline-block"
             >
               View More Case Studies

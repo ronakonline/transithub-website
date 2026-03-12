@@ -2,10 +2,10 @@ import { useState } from "react";
 import SignupModal from "./SignupModal";
 const plans = [
   {
-    label: "Starter",
+    label: "Free",
     name: "Starter",
     tagline: "Perfect for small fleets getting started",
-    price: "$49",
+    price: "$0",
     period: "/month",
     features: [
       "Up to 10 vehicles",
@@ -54,17 +54,17 @@ const plans = [
     highlight: false,
   },
 ];
-
+ 
 export default function Pricing() {
    const [showModal, setShowModal] = useState(false);
-
-
+ 
+ 
   const openModal = () => {
     setShowModal(true);
     document.body.classList.add("modal-open");
     document.documentElement.classList.add("modal-open"); // html element
   };
-
+ 
   const closeModal = () => {
     setShowModal(false);
     document.body.classList.remove("modal-open");
@@ -73,19 +73,19 @@ export default function Pricing() {
   return (
     <section id="pricing" className="py-24" style={{ background: "#0F1E2F" }}>
       <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-extrabold text-white mb-8">
+        <h2 className="text-4xl font-semibold text-white mb-8">
           Simple, Transparent Pricing
         </h2>
-        <p className="text-gray-400 mb-32">
+        <p className="text-gray-300 mb-32">
           Start free, scale as you grow. No hidden fees, no surprises.
         </p>
-
+ 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 items-stretch relative">
           {plans.map((p) => (
             <div
               key={p.name}
-              className={`relative flex flex-col p-8 h-[530px] w-[368px] ${
-                p.highlight ? "rounded-3xl h-[630px] z-10 -my-12 shadow-2xl " : "rounded-2xl"
+              className={`relative flex flex-col p-8 h-[550px] w-[368px] ${
+                p.highlight ? "rounded-3xl h-[610px] z-10 -my-8 shadow-2xl " : "rounded-2xl"
               }`}
               style={{
                  backgroundColor: p.highlight ? "#202F3E" : "rgba(32, 47, 62, 0.29)",
@@ -101,7 +101,7 @@ export default function Pricing() {
                   {p.badge}
                 </div>
               )}
-              <div className="text-gray-400 text-xs font-semibold tracking-widest mb-2">
+              <div className="text-gray-400 text-base font-semibold tracking-widest mb-2">
                 {p.label}
               </div>
               <div className="text-white text-2xl font-bold mb-1 text-left">{p.name}</div>
@@ -130,7 +130,7 @@ export default function Pricing() {
                 className="w-full py-3 rounded-xl font-normal text-sm transition-all hover:opacity-90"
                 style={
                   p.highlight
-                    ? { background: "#A3DE23", color: "#0A1220" }
+                    ? { background: "#A3DE23", color: "#0A1220", marginBottom:"32px" }
                     : { background: "#FFFFFF", border: "1px solid #374151", color: "#000000" }
                 }
               >

@@ -18,7 +18,7 @@ export default function PainPoints() {
   return (
     <section className="py-24" style={{ background: "#0F1E2F" }}>
       <div className="max-w-5xl mx-auto px-6 text-center">
-        <h2 className="text-5xl font-medium text-white mb-3">
+        <h2 className="text-5xl font-semibold text-white mb-6">
           Still Managing Transfers Manually?
         </h2>
         <p className="text-white mb-14">
@@ -46,13 +46,19 @@ export default function PainPoints() {
             style={{ background: "#56697F" }}
           >
             <span className="text-base mb-2">Sound like you?</span>
-            <a
-              href="#"
-              className="text-base font-semibold flex items-center gap-1"
+            <div
+                onClick={() =>
+                window.open(
+                  "https://mail.google.com/mail/?view=cm&to=info@transithub.io",
+                  "_blank",
+                  "noopener,noreferrer"
+                )
+              }
+              className="text-base font-semibold flex items-center gap-1 cursor-pointer"
               style={{ color: "#A3E635" }}
             >
               Let's talk<img src={arrowIcon} alt="warning" className="w-4 h-4" />
-            </a>
+            </div>
           </div>
         </div>
       </div>
