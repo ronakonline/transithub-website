@@ -42,16 +42,26 @@ export default function PreBookingPage({ vehicle, searchData, currency, currency
   return (
     <div className="min-h-screen  bg-[#0F1E2F]">
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-gray-900 backdrop-blur-sm shadow-md' : 'bg-[#0F1E2F] border-b border-transparent'}`}>
-     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1">
-        <div className="flex items-center h-16 space-x-8">
-          <button onClick={onBack} className={`flex items-center space-x-2 transition-colors ${scrolled ? 'text-white hover:text-gray-200' : 'text-white hover:text-white/80'}`}>
-            <ArrowLeft className="w-5 h-5" />
-            <span>Back to Results</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16">
+          
+          {/* Back Button */}
+          <button
+            onClick={onBack}
+            className="flex items-center space-x-1.5 text-white hover:text-white/80 transition-colors shrink-0"
+          >
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-sm sm:text-base whitespace-nowrap">Back</span>
           </button>
-         <div className="flex items-center space-x-4">
-          <img src={logo} alt="Logo" className="h-8 w-auto" />
-          <span className={`text-xl font-bold ${scrolled ? 'text-white' : 'text-white'}`}>Complete Your Booking</span>
-        </div>
+
+          {/* Logo + Title — center on mobile, left-ish on desktop */}
+          <div className="flex items-center space-x-2 sm:space-x-3 flex-1 justify-center sm:justify-start sm:ml-6">
+            <img src={logo} alt="Logo" className="h-5 sm:h-6 w-auto shrink-0" />
+            <span className="text-xs sm:text-base font-bold text-white leading-tight text-center sm:text-left">
+              Complete Your Booking
+            </span>
+          </div>
+
         </div>
       </div>
     </header>
@@ -60,47 +70,83 @@ export default function PreBookingPage({ vehicle, searchData, currency, currency
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
             {/* Selected Vehicle */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">Selected Vehicle</h2>
-              <div className="flex gap-6">
-                <img src={vehicle.image} alt={vehicle.name} className="w-48 h-32 object-cover rounded-lg" />
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">{vehicle.name}</h3>
-                  <div className="flex items-center space-x-4 text-sm text-slate-600 mb-3">
-                    <div className="flex items-center space-x-1"><Users className="w-4 h-4" /><span>{vehicle.passengers} Passengers</span></div>
-                    <div className="flex items-center space-x-1"><Luggage className="w-4 h-4" /><span>{vehicle.luggage} Bags</span></div>
-                  </div>
-                  <div className="space-y-1 text-sm text-slate-600">
-                    <div className="flex items-center space-x-2"><MapPin className="w-4 h-4" /><span>{searchData.from} → {searchData.to}</span></div>
-                    <div className="flex items-center space-x-2"><Calendar className="w-4 h-4" /><span>{searchData.pickupDate ? searchData.pickupDate.toLocaleDateString('en-GB') : 'Not set'}</span></div>
-                    <div className="flex items-center space-x-2"><Clock className="w-4 h-4" /><span>{searchData.pickupTime ? searchData.pickupTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : 'Not set'}</span></div>
-                  </div>
+          <div className="bg-white rounded-xl shadow-sm p-6">
+            <h2 className="text-2xl font-bold text-slate-900 mb-6">Selected Vehicle</h2>
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+              <img 
+                src={vehicle.image} 
+                alt={vehicle.name} 
+                className="w-full sm:w-48 h-48 sm:h-32 object-cover rounded-lg flex-shrink-0" 
+              />
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{vehicle.name}</h3>
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm text-slate-600 mb-3">
+                  <div className="flex items-center space-x-1"><Users className="w-4 h-4" /><span>{vehicle.passengers} Passengers</span></div>
+                  <div className="flex items-center space-x-1"><Luggage className="w-4 h-4" /><span>{vehicle.luggage} Bags</span></div>
+                </div>
+                <div className="space-y-1 text-sm text-slate-600">
+                  <div className="flex items-center space-x-2"><MapPin className="w-4 h-4 flex-shrink-0" /><span className="break-words">{searchData.from} → {searchData.to}</span></div>
+                  <div className="flex items-center space-x-2"><Calendar className="w-4 h-4 flex-shrink-0" /><span>{searchData.pickupDate ? searchData.pickupDate.toLocaleDateString('en-GB') : 'Not set'}</span></div>
+                  <div className="flex items-center space-x-2"><Clock className="w-4 h-4 flex-shrink-0" /><span>{searchData.pickupTime ? searchData.pickupTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : 'Not set'}</span></div>
                 </div>
               </div>
             </div>
+          </div>
 
             {/* Add-ons */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h2 className="text-2xl font-bold text-slate-900 mb-6">Available Add-ons</h2>
-              <div className="space-y-4">
-                {addOns.map((addon) => {
-                  const iconMap = { 'child-seat': <Baby className="w-8 h-8 text-pink-600" />, 'extra-waiting': <Timer className="w-8 h-8 text-blue-600" />, 'chocolates-roses': <Gift className="w-8 h-8 text-rose-600" /> };
-                  return (
-                    <div key={addon.id} className="flex items-center justify-between p-5 border border-slate-200 rounded-xl hover:border-slate-300 hover:shadow-md transition-all bg-white">
-                      <div className="flex items-center space-x-4 flex-1">
-                        <div className="flex-shrink-0">{iconMap[addon.id]}</div>
-                        <div><h3 className="font-bold text-slate-900">{addon.name}</h3><p className="text-sm font-semibold text-slate-600 mt-1">{currencySymbol}{convertPrice(addon.price)} {currency}</p></div>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <button onClick={() => updateAddOnQuantity(addon.id, -1)} disabled={addon.quantity === 0} className="w-9 h-9 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"><Minus className="w-4 h-4 text-slate-700" /></button>
-                        <span className="w-8 text-center font-bold text-lg text-slate-900">{addon.quantity}</span>
-                        <button onClick={() => updateAddOnQuantity(addon.id, 1)} className="w-9 h-9 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center hover:bg-slate-50 transition-colors shadow-sm"><Plus className="w-4 h-4 text-slate-700" /></button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+          <div className="bg-white rounded-xl shadow-sm p-4 sm:p-6">
+  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">Available Add-ons</h2>
+  <div className="space-y-3 sm:space-y-4">
+    {addOns.map((addon) => {
+      const iconMap = {
+        'child-seat': <Baby className="w-6 h-6 sm:w-8 sm:h-8 text-pink-600" />,
+        'extra-waiting': <Timer className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" />,
+        'chocolates-roses': <Gift className="w-6 h-6 sm:w-8 sm:h-8 text-rose-600" />
+      };
+      return (
+        <div
+          key={addon.id}
+          className="flex items-center justify-between p-3 sm:p-5 border border-slate-200 rounded-xl hover:border-slate-300 hover:shadow-md transition-all bg-white gap-3"
+        >
+          {/* Left: Icon + Info */}
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+            <div className="flex-shrink-0">{iconMap[addon.id]}</div>
+            <div className="min-w-0">
+              <h3 className="font-bold text-slate-900 text-sm sm:text-base leading-tight truncate">
+                {addon.name}
+              </h3>
+              <p className="text-xs sm:text-sm font-semibold text-slate-600 mt-0.5">
+                {currencySymbol}{convertPrice(addon.price)} {currency}
+              </p>
             </div>
+          </div>
+
+          {/* Right: Quantity Controls */}
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            <button
+              onClick={() => updateAddOnQuantity(addon.id, -1)}
+              disabled={addon.quantity === 0}
+              className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm"
+            >
+              <Minus className="w-3 h-3 sm:w-4 sm:h-4 text-slate-700" />
+            </button>
+
+            <span className="w-6 sm:w-8 text-center font-bold text-base sm:text-lg text-slate-900">
+              {addon.quantity}
+            </span>
+
+            <button
+              onClick={() => updateAddOnQuantity(addon.id, 1)}
+              className="w-7 h-7 sm:w-9 sm:h-9 rounded-full bg-white border-2 border-slate-300 flex items-center justify-center hover:bg-slate-50 transition-colors shadow-sm"
+            >
+              <Plus className="w-3 h-3 sm:w-4 sm:h-4 text-slate-700" />
+            </button>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</div>
 
             {/* Booking Form */}
             <div className="bg-white rounded-xl shadow-sm p-6">

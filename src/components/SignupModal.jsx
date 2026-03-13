@@ -118,7 +118,7 @@ export default function SignupModal({ onClose }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center"
       style={{ backgroundColor: "rgba(0,0,0,0.6)", backdropFilter: "blur(2px)" }}>
 
-      <div className="relative w-full max-w-md rounded-2xl p-8 shadow-2xl"
+      <div className="relative w-full max-w-[340px] md:max-w-md rounded-2xl p-8 shadow-2xl"
         style={{ backgroundColor: "#2E3F53" }}>
 
         <button onClick={onClose} className="absolute top-6 right-4 text-[#99A1AF] hover:text-white text-xl w-5 h-5 leading-none">

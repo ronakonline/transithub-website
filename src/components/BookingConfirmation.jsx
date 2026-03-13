@@ -68,22 +68,43 @@ export default function BookingConfirmation({ bookingId, vehicle, searchData, cu
               </div>
             </div>
 
-            <div className="border-t border-slate-200 pt-6">
-              <h2 className="text-xl font-bold text-slate-900 mb-4">Vehicle Details</h2>
-              <div className="flex gap-6">
-                <img src={vehicle.image} alt={vehicle.name} className="w-32 h-24 object-cover rounded-lg" />
-                <div className="flex-1">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{vehicle.name}</h3>
-                  <div className="flex items-center space-x-4 text-sm text-slate-600 mb-2">
-                    <div className="flex items-center space-x-1"><Users className="w-4 h-4" /><span>{vehicle.passengers} Passengers</span></div>
-                    <div className="flex items-center space-x-1"><Luggage className="w-4 h-4" /><span>{vehicle.luggage} Bags</span></div>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {vehicle.features.map((f, i) => <span key={i} className="px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">{f}</span>)}
-                  </div>
-                </div>
+        <div className="border-t border-slate-200 pt-4 sm:pt-6">
+        <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-3 sm:mb-4">Vehicle Details</h2>
+
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+          
+          {/* Image */}
+          <img
+            src={vehicle.image}
+            alt={vehicle.name}
+            className="w-full sm:w-32 h-48 sm:h-24 object-cover rounded-lg flex-shrink-0"
+          />
+
+          {/* Info */}
+          <div className="flex-1 min-w-0">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2">{vehicle.name}</h3>
+
+            <div className="flex items-center flex-wrap gap-x-4 gap-y-1 text-sm text-slate-600 mb-3">
+              <div className="flex items-center space-x-1">
+                <Users className="w-4 h-4 flex-shrink-0" />
+                <span>{vehicle.passengers} Passengers</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <Luggage className="w-4 h-4 flex-shrink-0" />
+                <span>{vehicle.luggage} Bags</span>
               </div>
             </div>
+
+            <div className="flex flex-wrap gap-2">
+              {vehicle.features.map((f, i) => (
+                <span key={i} className="px-2 py-1 bg-slate-100 text-slate-700 text-xs rounded-full">
+                  {f}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
 
             <div className="border-t border-slate-200 pt-6">
               <h2 className="text-xl font-bold text-slate-900 mb-4">Payment Summary</h2>
