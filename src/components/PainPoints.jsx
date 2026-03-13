@@ -16,50 +16,64 @@ const cards = [
 
 export default function PainPoints() {
   return (
-    <section className="py-24" style={{ background: "#0F1E2F" }}>
-      <div className="max-w-5xl mx-auto px-6 text-center">
-        <h2 className="text-5xl font-semibold text-white mb-6">
+    <section className="py-16 sm:py-20 lg:py-24 bg-[#0F1E2F]">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 md:px-10 text-center">
+
+        {/* Heading */}
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-5 leading-tight">
           Still Managing Transfers Manually?
         </h2>
-        <p className="text-white mb-14">
+
+        {/* Subtext */}
+        <p className="text-white text-sm sm:text-base md:text-lg mb-12 max-w-2xl mx-auto">
           Every day without automation costs you time, money, and customer trust.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
+
           {cards.map((c, i) => (
             <div
               key={i}
-              className="flex items-center gap-6 pl-7 pr-7 py-5 rounded-2xl bg-white text-left">
-              <div
-                className="w-16 h-20 rounded-xl flex items-center justify-center flex-shrink-0"
-              >
-               <img src={c.icon} alt="warning" className="w-full h-full" />
+              className="flex items-center gap-4 sm:gap-5 px-5 py-5 sm:px-6 sm:py-6 rounded-2xl bg-white text-left"
+            >
+              {/* Icon */}
+              <div className="w-12 h-14 sm:w-14 sm:h-16 md:w-16 md:h-20 flex items-center justify-center flex-shrink-0">
+                <img src={c.icon} alt="warning" className="w-full h-full object-contain" />
               </div>
-              <span className="font-normal text-[#101828] whitespace-pre-line text-base leading-normal">
+
+              {/* Text */}
+              <span className="font-normal text-[#101828] whitespace-pre-line text-sm sm:text-base md:text-lg leading-snug">
                 {c.title}
               </span>
             </div>
           ))}
 
+          {/* Last Card */}
           <div
-            className="flex flex-col items-center justify-center p-5 rounded-2xl text-white font-bold text-center"
+            className="flex flex-col items-center justify-center px-6 py-6 rounded-2xl text-white font-bold text-center"
             style={{ background: "#56697F" }}
           >
-            <span className="text-base mb-2">Sound like you?</span>
+            <span className="text-sm sm:text-base md:text-lg mb-2">
+              Sound like you?
+            </span>
+
             <div
-                onClick={() =>
+              onClick={() =>
                 window.open(
                   "https://mail.google.com/mail/?view=cm&to=info@transithub.io",
                   "_blank",
                   "noopener,noreferrer"
                 )
               }
-              className="text-base font-semibold flex items-center gap-1 cursor-pointer"
+              className="text-sm sm:text-base md:text-lg font-semibold flex items-center gap-2 cursor-pointer"
               style={{ color: "#A3E635" }}
             >
-              Let's talk<img src={arrowIcon} alt="warning" className="w-4 h-4" />
+              Let's talk
+              <img src={arrowIcon} alt="arrow" className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
+
         </div>
       </div>
     </section>

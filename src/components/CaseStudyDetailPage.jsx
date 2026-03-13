@@ -3,6 +3,8 @@ import image1 from "../img/casestudies1.png";
 import image2 from "../img/casestudies2.png";
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, TrendingUp, Users, Clock, DollarSign, Target, CheckCircle2, Quote } from 'lucide-react';
+import Navbar from './NavBar';
+import Footer from './Footer';
  
 export default function CaseStudyDetailPage() {
   const { id } = useParams();
@@ -225,14 +227,15 @@ export default function CaseStudyDetailPage() {
       }
     }
   };
- 
-  const study = caseStudies[id || ''];
- 
+   const study = caseStudies[id || ""];
+
   if (!study) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-white flex items-center justify-center px-4">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4">Case Study Not Found</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            Case Study Not Found
+          </h1>
           <Link to="/case-study" className="text-emerald-600 hover:underline">
             Back to Case Studies
           </Link>
@@ -240,167 +243,298 @@ export default function CaseStudyDetailPage() {
       </div>
     );
   }
- 
+
   return (
+    <>
+    <Navbar/>
     <div className="min-h-screen bg-white">
-      <div className="relative h-96 overflow-hidden">
+
+      {/* HERO */}
+      <div className="relative h-[300px] sm:h-[350px] md:h-[420px] overflow-hidden">
         <img
           src={study.image}
           alt={study.title}
           className="w-full h-full object-cover"
         />
+
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-transparent" />
+
         <div className="absolute inset-0 flex items-end">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 w-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-10 md:pb-12 w-full">
+
             <Link
               to="/case-study"
-              className="inline-flex items-center space-x-2 text-white/80 hover:text-white mb-6 transition-colors"
+              className="inline-flex items-center space-x-2 text-white/80 hover:text-white mb-4 sm:mb-6 transition-colors"
             >
-              <ArrowLeft className="w-5 h-5" />
-              <span>Back to Case Studies</span>
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-sm sm:text-base">Back to Case Studies</span>
             </Link>
-            <div className="inline-block px-4 py-2 ml-4 bg-white backdrop-blur-sm rounded-full mb-4">
-              <span className="text-sm font-semibold text-[#0F1E2F]">{study.category}</span>
+
+            <div className="inline-block px-3 py-1 sm:px-4 sm:py-2 ml-0 sm:ml-4 bg-white rounded-full mb-4">
+              <span className="text-xs sm:text-sm font-semibold text-[#0F1E2F]">
+                {study.category}
+              </span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
               {study.title}
             </h1>
+
           </div>
         </div>
       </div>
- 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-4 gap-12 mb-16">
-          <div className="lg:col-span-1">
-            <div className="bg-slate-50 rounded-xl p-6 sticky top-24">
-              <h3 className="font-semibold text-slate-900 mb-4">Client Profile</h3>
+
+      {/* MAIN */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 md:py-16">
+
+        <div className="grid lg:grid-cols-4 gap-10 lg:gap-12 mb-16">
+
+          {/* SIDEBAR */}
+          <div className="lg:col-span-1 order-2 lg:order-1">
+
+            <div className="bg-slate-50 rounded-xl p-6 lg:sticky lg:top-24">
+
+              <h3 className="font-semibold text-slate-900 mb-4">
+                Client Profile
+              </h3>
+
               <div className="space-y-3">
+
                 <div>
                   <div className="text-sm text-slate-600">Company</div>
-                  <div className="font-medium text-slate-900">{study.client.name}</div>
+                  <div className="font-medium text-slate-900">
+                    {study.client.name}
+                  </div>
                 </div>
+
                 <div>
                   <div className="text-sm text-slate-600">Industry</div>
-                  <div className="font-medium text-slate-900">{study.client.industry}</div>
+                  <div className="font-medium text-slate-900">
+                    {study.client.industry}
+                  </div>
                 </div>
+
                 <div>
                   <div className="text-sm text-slate-600">Size</div>
-                  <div className="font-medium text-slate-900">{study.client.size}</div>
+                  <div className="font-medium text-slate-900">
+                    {study.client.size}
+                  </div>
                 </div>
+
                 <div>
                   <div className="text-sm text-slate-600">Markets</div>
-                  <div className="font-medium text-slate-900">{study.client.markets}</div>
+                  <div className="font-medium text-slate-900">
+                    {study.client.markets}
+                  </div>
                 </div>
+
               </div>
+
             </div>
+
           </div>
- 
-          <div className="lg:col-span-3 space-y-16">
+
+          {/* CONTENT */}
+          <div className="lg:col-span-3 space-y-14 order-1 lg:order-2">
+
+            {/* CHALLENGE */}
             <section>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">{study.challenge.title}</h2>
-              <p className="text-lg text-slate-600 mb-6">
+
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
+                {study.challenge.title}
+              </h2>
+
+              <p className="text-base sm:text-lg text-slate-600 mb-6">
                 {study.challenge.description}
               </p>
+
               <div className="bg-red-50 rounded-xl p-6 border border-red-100">
-                <h3 className="font-semibold text-slate-900 mb-4">Key Challenges</h3>
+
+                <h3 className="font-semibold text-slate-900 mb-4">
+                  Key Challenges
+                </h3>
+
                 <ul className="space-y-3">
+
                   {study.challenge.problems.map((problem, idx) => (
                     <li key={idx} className="flex items-start space-x-3">
                       <span className="w-1.5 h-1.5 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                      <span className="text-slate-700">{problem}</span>
+                      <span className="text-slate-700 text-sm sm:text-base">
+                        {problem}
+                      </span>
                     </li>
                   ))}
+
                 </ul>
+
               </div>
+
             </section>
- 
+
+            {/* SOLUTION */}
             <section>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">{study.solution.title}</h2>
-              <p className="text-lg text-slate-600 mb-8">
+
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
+                {study.solution.title}
+              </h2>
+
+              <p className="text-base sm:text-lg text-slate-600 mb-8">
                 {study.solution.description}
               </p>
-              <div className="grid md:grid-cols-2 gap-6">
+
+              <div className="grid sm:grid-cols-2 gap-6">
+
                 {study.solution.features.map((feature, idx) => (
-                  <div key={idx} className="bg-gray-50 rounded-xl p-6 border border-emerald-100">
-                    <h3 className="font-semibold text-slate-900 mb-2">{feature.title}</h3>
-                    <p className="text-slate-600 text-sm">{feature.description}</p>
+                  <div
+                    key={idx}
+                    className="bg-gray-50 rounded-xl p-6 border border-emerald-100"
+                  >
+                    <h3 className="font-semibold text-slate-900 mb-2">
+                      {feature.title}
+                    </h3>
+
+                    <p className="text-slate-600 text-sm">
+                      {feature.description}
+                    </p>
                   </div>
                 ))}
+
               </div>
+
             </section>
- 
+
+            {/* RESULTS */}
             <section>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">{study.results.title}</h2>
-              <p className="text-lg text-slate-600 mb-8">
+
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
+                {study.results.title}
+              </h2>
+
+              <p className="text-base sm:text-lg text-slate-600 mb-8">
                 {study.results.description}
               </p>
- 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+
                 {study.results.metrics.map((metric, idx) => {
                   const Icon = metric.icon;
+
                   return (
-                    <div key={idx} className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 border border-gray-200">
+                    <div
+                      key={idx}
+                      className="bg-gradient-to-br from-white to-gray-50 rounded-xl p-6 border border-gray-200"
+                    >
+
                       <div className="w-12 h-12 bg-[#0F1E2F] rounded-lg flex items-center justify-center mb-4">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
-                      <div className="text-3xl font-bold text-[#0F1E2F] mb-1">{metric.value}</div>
-                      <div className="font-semibold text-slate-900 mb-2">{metric.label}</div>
-                      <div className="text-sm text-slate-600">{metric.description}</div>
+
+                      <div className="text-2xl sm:text-3xl font-bold text-[#0F1E2F] mb-1">
+                        {metric.value}
+                      </div>
+
+                      <div className="font-semibold text-slate-900 mb-2">
+                        {metric.label}
+                      </div>
+
+                      <div className="text-sm text-slate-600">
+                        {metric.description}
+                      </div>
+
                     </div>
                   );
                 })}
+
               </div>
- 
-              <div className="bg-slate-50 rounded-xl p-8 border border-slate-200">
-                <h3 className="font-semibold text-slate-900 mb-6 text-xl">Operational Impact</h3>
-                <div className="grid md:grid-cols-2 gap-4">
+
+              <div className="bg-slate-50 rounded-xl p-6 sm:p-8 border border-slate-200">
+
+                <h3 className="font-semibold text-slate-900 mb-6 text-lg sm:text-xl">
+                  Operational Impact
+                </h3>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+
                   {study.results.operationalImpact.map((impact, idx) => (
                     <div key={idx} className="flex items-start space-x-3">
                       <CheckCircle2 className="w-5 h-5 text-[#0F1E2F] flex-shrink-0 mt-0.5" />
-                      <span className="text-slate-700">{impact}</span>
+                      <span className="text-slate-700 text-sm sm:text-base">
+                        {impact}
+                      </span>
                     </div>
                   ))}
+
                 </div>
+
               </div>
+
             </section>
- 
-            <section className="bg-gray-300 rounded-2xl p-8 md:p-12 text-[#0F1E2F] relative overflow-hidden">
-              <Quote className="absolute top-8 right-8 w-24 h-24 text-white/10" />
+
+            {/* QUOTE */}
+            <section className="bg-gray-300 rounded-2xl p-6 sm:p-8 md:p-12 text-[#0F1E2F] relative overflow-hidden">
+
+              <Quote className="absolute top-6 right-6 sm:top-8 sm:right-8 w-16 sm:w-24 h-16 sm:h-24 text-white/10" />
+
               <div className="relative">
-                <Quote className="w-12 h-12 text-[#0F1E2F] mb-6" />
-                <blockquote className="text-xl md:text-2xl font-medium mb-6 leading-relaxed">
+
+                <Quote className="w-10 h-10 sm:w-12 sm:h-12 text-[#0F1E2F] mb-6" />
+
+                <blockquote className="text-lg sm:text-xl md:text-2xl font-medium mb-6 leading-relaxed">
                   "{study.quote.text}"
                 </blockquote>
+
                 <div className="border-t border-white/20 pt-6">
-                  <div className="font-semibold text-lg">{study.quote.author}</div>
-                  <div className="text-gray-700">{study.quote.company}</div>
+                  <div className="font-semibold text-lg">
+                    {study.quote.author}
+                  </div>
+                  <div className="text-gray-700">
+                    {study.quote.company}
+                  </div>
                 </div>
+
               </div>
+
             </section>
+
           </div>
+
         </div>
- 
-        <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-12 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+
+        {/* CTA */}
+        <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-8 sm:p-10 md:p-12 text-center text-white">
+
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
+
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
             See how TransitHub can help you achieve similar results. Schedule a personalized demo today.
           </p>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/demo" className="px-8 py-4 bg-white text-[#0F1E2F] rounded-lg font-semibold text-lg hover:bg-gray-200 transition-all duration-300 transform hover:-translate-y-0.5">
+
+            <Link
+              to="/demo"
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-[#0F1E2F] rounded-lg font-semibold text-sm sm:text-lg hover:bg-gray-200 transition-all duration-300 transform hover:-translate-y-0.5"
+            >
               Watch Demo
             </Link>
+
             <Link
               to="/case-study"
               onClick={() => window.scrollTo(0, 0)}
-              className="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold text-lg hover:bg-white hover:text-slate-900 transition-all duration-300 inline-block"
+              className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white rounded-lg font-semibold text-sm sm:text-lg hover:bg-white hover:text-slate-900 transition-all duration-300"
             >
               View More Case Studies
             </Link>
+
           </div>
+
         </div>
+
       </div>
     </div>
+    <Footer/>
+    </>
   );
 }

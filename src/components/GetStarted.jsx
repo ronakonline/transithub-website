@@ -1,7 +1,6 @@
 import step1Icon from "../img/Icon7.png";
 import step2Icon from "../img/Icon8.png";
 
-
 const steps = [
   {
     n: 1,
@@ -31,39 +30,55 @@ const steps = [
 
 export default function GetStarted() {
   return (
-    <section className="py-24 bg-[#0F1E2F]">
-      <div className="max-w-7xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-semibold text-white mb-8">
+    <section className="py-16 sm:py-20 lg:py-24 bg-[#0F1E2F]">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 md:px-10 text-center">
+
+        {/* Heading */}
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white mb-6">
           Get Started in 4 Simple Steps
         </h2>
-        <p className="text-white mb-14">
+
+        {/* Subheading */}
+        <p className="text-white text-sm sm:text-base md:text-lg mb-12 max-w-2xl mx-auto">
           Be fully operational in less than an hour. No complex setup, no IT team needed.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-7">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 lg:gap-8">
+
           {steps.map((s) => (
             <div
               key={s.n}
-              className="rounded-2xl pt-6 px-8 text-left flex flex-col justify-center items-center bg-[#202F3E]"
+              className="rounded-2xl pt-6 px-6 sm:px-7 lg:px-8 flex flex-col items-center text-center bg-[#202F3E] min-h-[260px] sm:min-h-[280px] lg:min-h-[300px]"
             >
-              {/* Step number badge */}
+
+              {/* Step number */}
               <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold mb-4 bg-[#A3E635] text-[#0A1220]">
                 {s.n}
               </div>
 
-              <h3 className="text-white font-bold text-xl mb-4 whitespace-pre-line text-center leading-snug">{s.title}</h3>
-              <p className="text-white text-sm leading-relaxed mb-12 text-center">{s.desc}</p>
+              {/* Title */}
+              <h3 className="text-white font-semibold text-lg sm:text-xl mb-3 whitespace-normal lg:whitespace-pre-line leading-snug">
+                {s.title}
+              </h3>
 
-              {/* Bottom icon image */}
-              <div className="mt-auto flex items-center justify-center h-22 overflow-hidden">
+              {/* Description */}
+              <p className="text-white text-sm leading-relaxed mb-8">
+                {s.desc}
+              </p>
+
+              {/* Bottom icon */}
+              <div className="mt-auto flex items-center justify-center">
                 <img
                   src={s.icon}
                   alt={s.title}
-                  className="h-22 w-24 object-contain"
+                  className="h-[110px] w-auto object-contain"
                 />
               </div>
+
             </div>
           ))}
+
         </div>
       </div>
     </section>

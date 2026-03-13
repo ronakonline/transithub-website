@@ -106,26 +106,60 @@ return (
   
 <div className="min-h-screen w-full bg-[#0F1E2F]" style={{paddingTop: '64px'}}>
       {/* Header */}
-      <header style={{ background: '#0F1E2F', position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50 }}>
-        <div className="w-full mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex justify-between items-center h-16">
-            <button onClick={() => { setBookingStep('search'); setShowResults(false); }} className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-              <div className="flex items-center justify-between">
-                <img
-                    src={Logo}
-                    alt="TransitHub Logo"
-                    className="h-9 w-auto object-contain mr-4"
-                />
-                </div>
-            <span className='text-white text-2xl tracking-widest'>DEMO</span>
+      <header className='h-[90px]' style={{ background: "#0F1E2F",position: "fixed",top: 0,left: 0,right: 0,zIndex: 50,}} >
+        <div className="w-full mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="flex items-center justify-between h-14 sm:h-16">
+
+            {/* Logo Section */}
+            <button
+              onClick={() => {
+                setBookingStep("search");
+                setShowResults(false);
+              }}
+              className="flex items-center flex-col sm:flex-row mt-10 gap-y-2 space-x-2 sm:space-x-3 hover:opacity-80 transition-opacity"
+            >
+              <img
+                src={Logo}
+                alt="TransitHub Logo"
+                className="h-7 sm:h-9 w-auto object-contain"
+              />
+
+              <span className="text-white text-lg sm:text-xl lg:text-2xl tracking-widest">
+                DEMO
+              </span>
             </button>
-            <div className="flex items-center space-x-4">
-              <select value={currency} onChange={(e) => setCurrency(e.target.value)} className="px-4 py-2 border text-white bg-transparent border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-sm">
-                <option value="GBP" style={{background:'#0F1E2F'}}>GBP (£)</option>
-                <option value="USD" style={{background:'#0F1E2F'}}>USD ($)</option>
-                <option value="EUR" style={{background:'#0F1E2F'}}>EUR (€)</option>
+
+            {/* Right Controls */}
+            <div className="flex flex-col sm:flex-row  mt-10 gap-y-2 items-center space-x-2 sm:space-x-4">
+
+              {/* Currency */}
+              <select
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+                className="px-2 sm:px-4 py-1.5 sm:py-2 border text-white bg-transparent border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-xs sm:text-sm"
+              >
+                <option value="GBP" style={{ background: "#0F1E2F" }}>
+                  GBP (£)
+                </option>
+                <option value="USD" style={{ background: "#0F1E2F" }}>
+                  USD ($)
+                </option>
+                <option value="EUR" style={{ background: "#0F1E2F" }}>
+                  EUR (€)
+                </option>
               </select>
-              <a href="https://www.transithub.io" target="_blank" rel="noopener noreferrer" style={{background:'#FFFFFF', color:'#0F1E2F'}} className="px-6 py-2 font-semibold rounded-lg hover:opacity-90 transition-all duration-200 shadow-md text-sm">Go Live</a>
+
+              {/* Go Live Button */}
+              <a
+                href="https://www.transithub.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ background: "#FFFFFF", color: "#0F1E2F" }}
+                className="px-3 sm:px-6 py-1.5 sm:py-2 font-semibold rounded-lg hover:opacity-90 transition-all duration-200 shadow-md text-xs sm:text-sm whitespace-nowrap"
+              >
+                Go Live
+              </a>
+
             </div>
           </div>
         </div>
@@ -134,337 +168,375 @@ return (
       {!showResults ? (
         <>
           {/* Hero */}
-          <div  className="relative py-16 bg-[#0F1E2F]">
-          <div className="absolute top-[60%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[400px] h-[80px] rounded-full bg-[#0D9688] blur-[100px] pointer-events-none z-0" />
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-14">
-                <h1 style={{ fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.1 }} className="text-5xl md:text-6xl text-white mb-4">Book Your Transfers Instantly</h1>
-                <p className="text-lg text-slate-300 mt-3">Reliable airport transfers and rentals from trusted suppliers worldwide.</p>
-              </div>
-   
-              {/* White Card */}
-              <div className="bg-white rounded-2xl shadow-2xl p-10 max-w-8xl mx-auto">
-                {/* Tabs */}
-                <div className="flex space-x-6 mb-5 border-b border-slate-200">
-                  {['transfers', 'rentals'].map(tab => (
-                    <button key={tab} onClick={() => setActiveTab(tab)} style={activeTab === tab ? {borderBottom: '2.5px solid #0F1E2F', color: '#0F1E2F', fontWeight: 700} : {color: '#64748b', borderBottom: '2.5px solid transparent'}} className={`pb-3 text-sm font-medium transition-colors capitalize`}>
-                      {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                    </button>
+       <div className="relative py-16 bg-[#0F1E2F]">
+        <div className="absolute top-[60%] left-[50%] -translate-x-1/2 -translate-y-1/2 w-[400px] h-[80px] rounded-full bg-[#0D9688] blur-[100px] pointer-events-none z-0" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 md:mb-14">
+            <h1 style={{ fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.1 }} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mb-4 mt-10">Book Your Transfers Instantly</h1>
+            <p className="text-base md:text-lg text-slate-300 mt-3">Reliable airport transfers and rentals from trusted suppliers worldwide.</p>
+          </div>
+
+          {/* White Card */}
+          <div className="bg-white rounded-2xl shadow-2xl p-4 sm:p-6 md:p-10 max-w-8xl mx-auto">
+            {/* Tabs */}
+            <div className="flex space-x-6 mb-5 border-b border-slate-200">
+              {['transfers', 'rentals'].map(tab => (
+                <button key={tab} onClick={() => setActiveTab(tab)} style={activeTab === tab ? {borderBottom: '2.5px solid #0F1E2F', color: '#0F1E2F', fontWeight: 700} : {color: '#64748b', borderBottom: '2.5px solid transparent'}} className={`pb-3 text-sm font-medium transition-colors capitalize`}>
+                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
+            </div>
+
+            {/* Transfers Form */}
+            {activeTab === 'transfers' && (
+              <div className="space-y-4">
+                {/* Trip type radios */}
+                <div className="flex space-x-6">
+                  {[['oneway', 'One Way'], ['return', 'Return']].map(([val, label]) => (
+                    <label key={val} className="flex items-center space-x-2 cursor-pointer">
+                      <input type="radio" name="tripType" value={val} checked={formData.tripType === val} onChange={() => setFormData({ ...formData, tripType: val })} className="w-4 h-4" style={{accentColor: '#00877B'}} />
+                      <span className="text-[#364153] text-sm font-medium">{label}</span>
+                    </label>
                   ))}
                 </div>
 
-                {/* Transfers Form */}
-                {activeTab === 'transfers' && (
-                  <div className="space-y-4">
-                    {/* Trip type radios */}
-                    <div className="flex space-x-6">
-                      {[['oneway', 'One Way'], ['return', 'Return']].map(([val, label]) => (
-                        <label key={val} className="flex items-center space-x-2 cursor-pointer">
-                          <input type="radio" name="tripType" value={val} checked={formData.tripType === val} onChange={() => setFormData({ ...formData, tripType: val })} className="w-4 h-4" style={{accentColor: '#00877B'}} />
-                          <span className="text-[#364153] text-sm font-medium">{label}</span>
-                        </label>
-                      ))}
+                {/* Horizontal inputs row */}
+                <div className="flex flex-col lg:flex-row items-stretch border border-slate-200 rounded-xl overflow-visible" style={{minHeight: '70px'}}>
+                  
+                  {/* From */}
+                  <div className="relative flex-1 border-b lg:border-b-0 lg:border-r border-slate-200">
+                    <div className="px-4 py-3 h-full">
+                      <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Pickup Location</label>
+                      <div className="relative flex items-center">
+                        <MapPin className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0" />
+                        <input
+                          type="text"
+                          value={formData.from}
+                          onChange={(e) => setFormData({ ...formData, from: e.target.value })}
+                          onFocus={() => setShowFromSuggestions(true)}
+                          placeholder="Enter pickup location"
+                          className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
+                        />
+                      </div>
                     </div>
-
-                    {/* Horizontal inputs row */}
-                    <div className="flex items-stretch border border-slate-200 rounded-xl overflow-visible" style={{minHeight: '70px'}}>
-                      {/* From */}
-                      <div className="relative flex-1 border-r border-slate-200">
-                        <div className="px-4 py-3 h-full">
-                          <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Pickup Location</label>
-                          <div className="relative flex items-center">
-                            <MapPin className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0" />
-                            <input
-                              type="text"
-                              value={formData.from}
-                              onChange={(e) => setFormData({ ...formData, from: e.target.value })}
-                              onFocus={() => setShowFromSuggestions(true)}
-                              placeholder="Enter pickup location"
-                              className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
-                            />
-                          </div>
-                        </div>
-                        {showFromSuggestions && (
-                          <div className="absolute z-50 left-0 right-0 mt-1 top-full bg-white border border-slate-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
-                            <div className="p-2">
-                              <div className="text-xs font-semibold text-slate-500 px-3 py-2">AIRPORTS</div>
-                              {locations.airports.map((loc, i) => <button key={i} onClick={() => { setFormData({ ...formData, from: loc }); setShowFromSuggestions(false); }} className="w-full text-left px-3 py-2 hover:bg-slate-50 rounded flex items-center space-x-2"><MapPin className="w-4 h-4 text-slate-400" /><span className="text-sm text-slate-700">{loc}</span></button>)}
-                              <div className="text-xs font-semibold text-slate-500 px-3 py-2 mt-2">HOTELS</div>
-                              {locations.hotels.map((loc, i) => <button key={i} onClick={() => { setFormData({ ...formData, from: loc }); setShowFromSuggestions(false); }} className="w-full text-left px-3 py-2 hover:bg-slate-50 rounded flex items-center space-x-2"><MapPin className="w-4 h-4 text-slate-400" /><span className="text-sm text-slate-700">{loc}</span></button>)}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Swap icon */}
-                      <div className="flex items-center pr-2 -mx-3 border-slate-200 flex-shrink-0">
-                        <svg className="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                        </svg>
-                      </div>
-
-                      {/* To */}
-                      <div className="relative flex-1 border-r border-slate-200">
-                        <div className="px-4 py-3 h-full">
-                          <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Dropoff Location</label>
-                          <div className="relative flex items-center">
-                            <MapPin className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0" />
-                            <input
-                              type="text"
-                              value={formData.to}
-                              onChange={(e) => setFormData({ ...formData, to: e.target.value })}
-                              onFocus={() => setShowToSuggestions(true)}
-                              placeholder="Enter dropoff location"
-                              className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
-                            />
-                          </div>
-                        </div>
-                        {showToSuggestions && (
-                          <div className="absolute z-50 left-0 right-0 mt-1 top-full bg-white border border-slate-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
-                            <div className="p-2">
-                              <div className="text-xs font-semibold text-slate-500 px-3 py-2">HOTELS</div>
-                              {locations.hotels.map((loc, i) => <button key={i} onClick={() => { setFormData({ ...formData, to: loc }); setShowToSuggestions(false); }} className="w-full text-left px-3 py-2 hover:bg-slate-50 rounded flex items-center space-x-2"><MapPin className="w-4 h-4 text-slate-400" /><span className="text-sm text-slate-700">{loc}</span></button>)}
-                              <div className="text-xs font-semibold text-slate-500 px-3 py-2 mt-2">AIRPORTS</div>
-                              {locations.airports.map((loc, i) => <button key={i} onClick={() => { setFormData({ ...formData, to: loc }); setShowToSuggestions(false); }} className="w-full text-left px-3 py-2 hover:bg-slate-50 rounded flex items-center space-x-2"><MapPin className="w-4 h-4 text-slate-400" /><span className="text-sm text-slate-700">{loc}</span></button>)}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Pickup Date */}
-                      <div className="flex-1 border-r border-slate-200">
-                        <div className="px-4 py-3 h-full">
-                          <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Pickup Date</label>
-                          <div className="relative flex items-center">
-                            <Calendar className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 z-10 pointer-events-none" />
-                            <DatePicker
-                              selected={formData.pickupDate}
-                              onChange={(date) => setFormData({ ...formData, pickupDate: date })}
-                              dateFormat="dd/MM/yyyy"
-                              minDate={new Date()}
-                              placeholderText="dd-mm-yyyy"
-                              className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
-                              wrapperClassName="w-full"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Pickup Time */}
-                      <div className="flex-1 border-r border-slate-200">
-                        <div className="px-4 py-3 h-full">
-                          <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Pickup Time</label>
-                          <div className="relative flex items-center">
-                            <Clock className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 z-10 pointer-events-none" />
-                            <DatePicker
-                              selected={formData.pickupTime}
-                              onChange={(date) => setFormData({ ...formData, pickupTime: date })}
-                              showTimeSelect
-                              showTimeSelectOnly
-                              timeIntervals={15}
-                              timeCaption="Time"
-                              dateFormat="HH:mm"
-                              timeFormat="HH:mm"
-                              placeholderText="--:--"
-                              className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
-                              wrapperClassName="w-full"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Search Button */}
-                      <button
-                        onClick={handleSearch}
-                        disabled={searching || !formData.from || !formData.to || !formData.pickupDate || !formData.pickupTime}
-                        style={{ background: '#0F1E2F', color: '#C6F135', borderRadius: '0 12px 12px 0', minWidth: '160px', fontWeight: 700, fontSize: '15px', letterSpacing: '-0.01em' }}
-                        className="flex items-center justify-center space-x-2 px-5 py-3 hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
-                      >
-                        {searching
-                          ? <><div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div><span>Searching...</span></>
-                          : <><span>Search Transfers</span><ArrowRight className="w-4 h-4" /></>
-                        }
-                      </button>
-                    </div>
-
-                    {formData.tripType === 'return' && (
-                      <div className="grid md:grid-cols-2 gap-6 mt-2">
-                        <div>
-                          <label className="block text-sm font-medium text-slate-700 mb-2">Return Date</label>
-                          <div className="relative">
-                            <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 z-10 pointer-events-none" />
-                            <DatePicker selected={formData.returnDate} onChange={(date) => setFormData({ ...formData, returnDate: date })} dateFormat="dd/MM/yyyy" minDate={formData.pickupDate || new Date()} placeholderText="Select return date" className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" wrapperClassName="w-full" />
-                          </div>
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-slate-700 mb-2">Return Time</label>
-                          <div className="relative">
-                            <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 z-10 pointer-events-none" />
-                            <DatePicker selected={formData.returnTime} onChange={(date) => setFormData({ ...formData, returnTime: date })} showTimeSelect showTimeSelectOnly timeIntervals={15} timeCaption="Time" dateFormat="HH:mm" timeFormat="HH:mm" placeholderText="Select return time" className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" wrapperClassName="w-full" />
-                          </div>
+                    {showFromSuggestions && (
+                      <div className="absolute z-50 left-0 right-0 mt-1 top-full bg-white border border-slate-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                        <div className="p-2">
+                          <div className="text-xs font-semibold text-slate-500 px-3 py-2">AIRPORTS</div>
+                          {locations.airports.map((loc, i) => <button key={i} onClick={() => { setFormData({ ...formData, from: loc }); setShowFromSuggestions(false); }} className="w-full text-left px-3 py-2 hover:bg-slate-50 rounded flex items-center space-x-2"><MapPin className="w-4 h-4 text-slate-400" /><span className="text-sm text-slate-700">{loc}</span></button>)}
+                          <div className="text-xs font-semibold text-slate-500 px-3 py-2 mt-2">HOTELS</div>
+                          {locations.hotels.map((loc, i) => <button key={i} onClick={() => { setFormData({ ...formData, from: loc }); setShowFromSuggestions(false); }} className="w-full text-left px-3 py-2 hover:bg-slate-50 rounded flex items-center space-x-2"><MapPin className="w-4 h-4 text-slate-400" /><span className="text-sm text-slate-700">{loc}</span></button>)}
                         </div>
                       </div>
                     )}
                   </div>
-                )}
 
-                {/* Rentals Form */}
-                {activeTab === 'rentals' && (
-                  <div className="space-y-4">
-                    {/* Horizontal inputs row */}
-                    <div className="flex items-stretch border border-slate-200 rounded-xl overflow-visible" style={{minHeight: '70px'}}>
-                      {/* City */}
-                      <div className="relative flex-1 border-r border-slate-200">
-                        <div className="px-4 py-3 h-full">
-                          <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">City</label>
-                          <div className="flex items-center">
-                            <MapPin className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0" />
-                            <input
-                              type="text"
-                              value={rentalFormData.city}
-                              onChange={(e) => { setRentalFormData({ ...rentalFormData, city: e.target.value, pickupAddress: '' }); setShowCitySuggestions(true); }}
-                              onFocus={() => setShowCitySuggestions(true)}
-                              placeholder="Select a city"
-                              className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
-                            />
-                          </div>
-                        </div>
-                        {showCitySuggestions && (
-                          <div className="absolute z-10 left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
-                            {rentalCities.filter(c => c.toLowerCase().includes(rentalFormData.city.toLowerCase())).map((city, i) => (
-                              <button key={i} onClick={() => { setRentalFormData({ ...rentalFormData, city, pickupAddress: '' }); setShowCitySuggestions(false); }} className="w-full px-4 py-3 text-left hover:bg-slate-50 border-b border-slate-100 last:border-b-0">
-                                <div className="flex items-center space-x-3"><MapPin className="w-4 h-4 text-blue-600" /><span className="text-slate-900 text-sm">{city}</span></div>
-                              </button>
-                            ))}
-                          </div>
-                        )}
+                  {/* Swap icon - only on desktop */}
+                  <div className="hidden lg:flex items-center pr-2 -mx-3 border-slate-200 flex-shrink-0">
+                    <svg className="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                    </svg>
+                  </div>
+
+                  {/* To */}
+                  <div className="relative flex-1 border-b lg:border-b-0 lg:border-r border-slate-200">
+                    <div className="px-4 py-3 h-full">
+                      <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Dropoff Location</label>
+                      <div className="relative flex items-center">
+                        <MapPin className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0" />
+                        <input
+                          type="text"
+                          value={formData.to}
+                          onChange={(e) => setFormData({ ...formData, to: e.target.value })}
+                          onFocus={() => setShowToSuggestions(true)}
+                          placeholder="Enter dropoff location"
+                          className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
+                        />
                       </div>
-
-                      {/* Pickup Date */}
-                      <div className="flex-1 border-r border-slate-200">
-                        <div className="px-4 py-3 h-full">
-                          <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Pickup Date</label>
-                          <div className="flex items-center">
-                            <Calendar className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 pointer-events-none" />
-                            <DatePicker
-                              selected={rentalFormData.pickupDate}
-                              onChange={(date) => setRentalFormData({ ...rentalFormData, pickupDate: date })}
-                              minDate={new Date()}
-                              dateFormat="dd/MM/yyyy"
-                              placeholderText="Pickup Date"
-                              className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
-                              wrapperClassName="w-full"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Pickup Time */}
-                      <div className="flex-1 border-r border-slate-200">
-                        <div className="px-4 py-3 h-full">
-                          <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Pickup Time</label>
-                          <div className="flex items-center">
-                            <Clock className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 pointer-events-none" />
-                            <DatePicker
-                              selected={rentalFormData.pickupTime}
-                              onChange={(time) => setRentalFormData({ ...rentalFormData, pickupTime: time })}
-                              showTimeSelect
-                              showTimeSelectOnly
-                              timeIntervals={15}
-                              timeCaption="Time"
-                              dateFormat="HH:mm"
-                              timeFormat="HH:mm"
-                              placeholderText="Pickup Time"
-                              className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
-                              wrapperClassName="w-full"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Hours */}
-                      <div className="flex-1 border-r border-slate-200">
-                        <div className="px-4 py-3 h-full">
-                          <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Hours</label>
-                          <div className="flex items-center">
-                            <Clock className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 pointer-events-none" />
-                            <select
-                              value={rentalFormData.hours}
-                              onChange={(e) => setRentalFormData({ ...rentalFormData, hours: e.target.value })}
-                              className="w-full text-sm text-slate-800 focus:outline-none bg-transparent appearance-none"
-                            >
-                              <option value="">Select hours</option>
-                              {['2', '4', '6', '8', '10', '12'].map(h => <option key={h} value={h}>{h} hours</option>)}
-                              <option value="custom">Custom</option>
-                            </select>
-                          </div>
-                          {rentalFormData.hours === 'custom' && (
-                            <input type="number" min="1" value={customHours} placeholder="Enter hours" onChange={(e) => setCustomHours(e.target.value)} className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent mt-1 border-t border-slate-200 pt-1" />
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Find Cars Button */}
-                      <button
-                        onClick={handleRentalSearch}
-                        disabled={searching}
-                        style={{ background: '#0F1E2F', color: '#C6F135', borderRadius: '0 12px 12px 0', minWidth: '170px', fontWeight: 700, fontSize: '15px', letterSpacing: '-0.01em' }}
-                        className="flex items-center justify-center space-x-2 px-5 py-3 hover:opacity-90 transition-all duration-200 disabled:opacity-50 flex-shrink-0"
-                      >
-                        {searching
-                          ? <><div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div><span>Searching...</span></>
-                          : <><span>Find Available Cars</span><ArrowRight className="w-4 h-4" /></>
-                        }
-                      </button>
                     </div>
-
-                    {/* Pickup address (shown below when city selected) */}
-                    {rentalFormData.city && (
-                      <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">Pickup Address</label>
-                        <div className="relative">
-                          <select value={rentalFormData.pickupAddress} onChange={(e) => setRentalFormData({ ...rentalFormData, pickupAddress: e.target.value })} className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none text-sm">
-                            <option value="">Select pickup address</option>
-                            {pickupAddresses[rentalFormData.city]?.map((addr, i) => <option key={i} value={addr}>{addr}</option>)}
-                          </select>
-                          <MapPin className="absolute right-4 top-3.5 w-5 h-5 text-slate-400 pointer-events-none" />
+                    {showToSuggestions && (
+                      <div className="absolute z-50 left-0 right-0 mt-1 top-full bg-white border border-slate-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                        <div className="p-2">
+                          <div className="text-xs font-semibold text-slate-500 px-3 py-2">HOTELS</div>
+                          {locations.hotels.map((loc, i) => <button key={i} onClick={() => { setFormData({ ...formData, to: loc }); setShowToSuggestions(false); }} className="w-full text-left px-3 py-2 hover:bg-slate-50 rounded flex items-center space-x-2"><MapPin className="w-4 h-4 text-slate-400" /><span className="text-sm text-slate-700">{loc}</span></button>)}
+                          <div className="text-xs font-semibold text-slate-500 px-3 py-2 mt-2">AIRPORTS</div>
+                          {locations.airports.map((loc, i) => <button key={i} onClick={() => { setFormData({ ...formData, to: loc }); setShowToSuggestions(false); }} className="w-full text-left px-3 py-2 hover:bg-slate-50 rounded flex items-center space-x-2"><MapPin className="w-4 h-4 text-slate-400" /><span className="text-sm text-slate-700">{loc}</span></button>)}
                         </div>
                       </div>
                     )}
                   </div>
+
+                  {/* Pickup Date */}
+                  <div className="flex-1 border-b lg:border-b-0 lg:border-r border-slate-200">
+                    <div className="px-4 py-3 h-full">
+                      <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Pickup Date</label>
+                      <div className="relative flex items-center">
+                        <Calendar className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 z-10 pointer-events-none" />
+                        <DatePicker
+                          selected={formData.pickupDate}
+                          onChange={(date) => setFormData({ ...formData, pickupDate: date })}
+                          dateFormat="dd/MM/yyyy"
+                          minDate={new Date()}
+                          placeholderText="dd-mm-yyyy"
+                          className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
+                          wrapperClassName="w-full"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Pickup Time */}
+                  <div className="flex-1 border-b lg:border-b-0 lg:border-r border-slate-200">
+                    <div className="px-4 py-3 h-full">
+                      <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Pickup Time</label>
+                      <div className="relative flex items-center">
+                        <Clock className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 z-10 pointer-events-none" />
+                        <DatePicker
+                          selected={formData.pickupTime}
+                          onChange={(date) => setFormData({ ...formData, pickupTime: date })}
+                          showTimeSelect
+                          showTimeSelectOnly
+                          timeIntervals={15}
+                          timeCaption="Time"
+                          dateFormat="HH:mm"
+                          timeFormat="HH:mm"
+                          placeholderText="--:--"
+                          className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
+                          wrapperClassName="w-full"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Search Button */}
+                  <button
+                    onClick={handleSearch}
+                    disabled={searching || !formData.from || !formData.to || !formData.pickupDate || !formData.pickupTime}
+                    style={{ background: '#0F1E2F', color: '#C6F135', fontWeight: 700, fontSize: '15px', letterSpacing: '-0.01em' }}
+                    className="flex items-center justify-center space-x-2 px-5 py-4 lg:py-3 hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl w-full lg:w-auto lg:min-w-[160px]"
+                  >
+                    {searching
+                      ? <><div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div><span>Searching...</span></>
+                      : <><span>Search Transfers</span><ArrowRight className="w-4 h-4" /></>
+                    }
+                  </button>
+                </div>
+
+                {formData.tripType === 'return' && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-2">
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Return Date</label>
+                      <div className="relative">
+                        <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 z-10 pointer-events-none" />
+                        <DatePicker selected={formData.returnDate} onChange={(date) => setFormData({ ...formData, returnDate: date })} dateFormat="dd/MM/yyyy" minDate={formData.pickupDate || new Date()} placeholderText="Select return date" className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" wrapperClassName="w-full" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Return Time</label>
+                      <div className="relative">
+                        <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 z-10 pointer-events-none" />
+                        <DatePicker selected={formData.returnTime} onChange={(date) => setFormData({ ...formData, returnTime: date })} showTimeSelect showTimeSelectOnly timeIntervals={15} timeCaption="Time" dateFormat="HH:mm" timeFormat="HH:mm" placeholderText="Select return time" className="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" wrapperClassName="w-full" />
+                      </div>
+                    </div>
+                  </div>
                 )}
               </div>
-            </div>
-          </div>
+            )}
 
-          {/* Features */}
-          <div className="min-h-[300px] w-full flex justify-center items-center">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-              <div className="flex justify-between w-full">
-                <div className="text-center">
-                  <div style={{background: 'rgba(255,255,255,0.1)', backdropFilter:'blur(4px)'}} className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Clock className="w-8 h-8 text-[#A3DE23]" />
+            {/* Rentals Form */}
+            {activeTab === 'rentals' && (
+              <div className="space-y-4">
+                {/* Horizontal inputs row */}
+                <div className="flex flex-col lg:flex-row items-stretch border border-slate-200 rounded-xl overflow-visible" style={{minHeight: '70px'}}>
+                  
+                  {/* City */}
+                  <div className="relative flex-1 border-b lg:border-b-0 lg:border-r border-slate-200">
+                    <div className="px-4 py-3 h-full">
+                      <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">City</label>
+                      <div className="flex items-center">
+                        <MapPin className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0" />
+                        <input
+                          type="text"
+                          value={rentalFormData.city}
+                          onChange={(e) => { setRentalFormData({ ...rentalFormData, city: e.target.value, pickupAddress: '' }); setShowCitySuggestions(true); }}
+                          onFocus={() => setShowCitySuggestions(true)}
+                          placeholder="Select a city"
+                          className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
+                        />
+                      </div>
+                    </div>
+                    {showCitySuggestions && (
+                      <div className="absolute z-10 left-0 right-0 top-full mt-1 bg-white border border-slate-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                        {rentalCities.filter(c => c.toLowerCase().includes(rentalFormData.city.toLowerCase())).map((city, i) => (
+                          <button key={i} onClick={() => { setRentalFormData({ ...rentalFormData, city, pickupAddress: '' }); setShowCitySuggestions(false); }} className="w-full px-4 py-3 text-left hover:bg-slate-50 border-b border-slate-100 last:border-b-0">
+                            <div className="flex items-center space-x-3"><MapPin className="w-4 h-4 text-blue-600" /><span className="text-slate-900 text-sm">{city}</span></div>
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                  <p className="text-white font-medium text-sm mt-4">24/7 Support</p>
-                  <p className="text-white font-medium text-sm mt-5">Round the clock customer assistance</p>
-                </div>
-                <div className="text-center">
-                  <div style={{background: 'rgba(255,255,255,0.1)', backdropFilter:'blur(4px)'}} className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <MapPin className="w-8 h-8 text-[#A3DE23]" />
+
+                  {/* Pickup Date */}
+                  <div className="flex-1 border-b lg:border-b-0 lg:border-r border-slate-200">
+                    <div className="px-4 py-3 h-full">
+                      <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Pickup Date</label>
+                      <div className="flex items-center">
+                        <Calendar className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 pointer-events-none" />
+                        <DatePicker
+                          selected={rentalFormData.pickupDate}
+                          onChange={(date) => setRentalFormData({ ...rentalFormData, pickupDate: date })}
+                          minDate={new Date()}
+                          dateFormat="dd/MM/yyyy"
+                          placeholderText="Pickup Date"
+                          className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
+                          wrapperClassName="w-full"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-white font-medium text-sm mt-4">Real-Time Tracking</p>
-                  <p className="text-white font-medium text-sm mt-5">Track your driver in real-time</p>
-                </div>
-                <div className="text-center">
-                  <div style={{background: 'rgba(255,255,255,0.1)', backdropFilter:'blur(4px)'}} className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-3">
-                    <Users className="w-8 h-8 text-[#A3DE23]" />
+
+                  {/* Pickup Time */}
+                  <div className="flex-1 border-b lg:border-b-0 lg:border-r border-slate-200">
+                    <div className="px-4 py-3 h-full">
+                      <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Pickup Time</label>
+                      <div className="flex items-center">
+                        <Clock className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 pointer-events-none" />
+                        <DatePicker
+                          selected={rentalFormData.pickupTime}
+                          onChange={(time) => setRentalFormData({ ...rentalFormData, pickupTime: time })}
+                          showTimeSelect
+                          showTimeSelectOnly
+                          timeIntervals={15}
+                          timeCaption="Time"
+                          dateFormat="HH:mm"
+                          timeFormat="HH:mm"
+                          placeholderText="Pickup Time"
+                          className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
+                          wrapperClassName="w-full"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-white font-medium text-sm mt-4">Professional Drivers</p>
-                  <p className="text-white font-medium text-sm mt-5">Experienced and vetted drivers</p>
+
+                  {/* Hours */}
+                  <div className="flex-1 border-b lg:border-b-0 lg:border-r border-slate-200">
+                    <div className="px-4 py-3 h-full">
+                      <label className="block text-sm font-semibold text-[#364153] mb-1 ml-6">Hours</label>
+                      <div className="flex items-center">
+                        <Clock className="w-4 h-4 text-slate-400 mr-2 flex-shrink-0 pointer-events-none" />
+                        <select
+                          value={rentalFormData.hours}
+                          onChange={(e) => setRentalFormData({ ...rentalFormData, hours: e.target.value })}
+                          className="w-full text-sm text-slate-800 focus:outline-none bg-transparent appearance-none"
+                        >
+                          <option value="">Select hours</option>
+                          {['2', '4', '6', '8', '10', '12'].map(h => <option key={h} value={h}>{h} hours</option>)}
+                          <option value="custom">Custom</option>
+                        </select>
+                      </div>
+                      {rentalFormData.hours === 'custom' && (
+                        <input type="number" min="1" value={customHours} placeholder="Enter hours" onChange={(e) => setCustomHours(e.target.value)} className="w-full text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent mt-1 border-t border-slate-200 pt-1" />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Find Cars Button */}
+                  <button
+                    onClick={handleRentalSearch}
+                    disabled={searching}
+                    style={{ background: '#0F1E2F', color: '#C6F135', fontWeight: 700, fontSize: '15px', letterSpacing: '-0.01em' }}
+                    className="flex items-center justify-center space-x-2 px-5 py-4 lg:py-3 hover:opacity-90 transition-all duration-200 disabled:opacity-50 flex-shrink-0 rounded-b-xl lg:rounded-b-none lg:rounded-r-xl w-full lg:w-auto lg:min-w-[170px]"
+                  >
+                    {searching
+                      ? <><div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div><span>Searching...</span></>
+                      : <><span>Find Available Cars</span><ArrowRight className="w-4 h-4" /></>
+                    }
+                  </button>
                 </div>
+
+                {/* Pickup address */}
+                {rentalFormData.city && (
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Pickup Address</label>
+                    <div className="relative">
+                      <select value={rentalFormData.pickupAddress} onChange={(e) => setRentalFormData({ ...rentalFormData, pickupAddress: e.target.value })} className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none text-sm">
+                        <option value="">Select pickup address</option>
+                        {pickupAddresses[rentalFormData.city]?.map((addr, i) => <option key={i} value={addr}>{addr}</option>)}
+                      </select>
+                      <MapPin className="absolute right-4 top-3.5 w-5 h-5 text-slate-400 pointer-events-none" />
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
+            )}
           </div>
+        </div>
+      </div>
+
+         {/* Features */}
+        <div className="min-h-[300px] w-full flex justify-center items-center py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+
+            <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6">
+
+              {/* Feature 1 */}
+              <div className="text-center max-w-xs">
+                <div
+                  style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(4px)" }}
+                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <Clock className="w-8 h-8 text-[#A3DE23]" />
+                </div>
+
+                <p className="text-white font-semibold text-base">
+                  24/7 Support
+                </p>
+
+                <p className="text-slate-300 text-sm mt-2">
+                  Round the clock customer assistance
+                </p>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="text-center max-w-xs">
+                <div
+                  style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(4px)" }}
+                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <MapPin className="w-8 h-8 text-[#A3DE23]" />
+                </div>
+
+                <p className="text-white font-semibold text-base">
+                  Real-Time Tracking
+                </p>
+
+                <p className="text-slate-300 text-sm mt-2">
+                  Track your driver in real-time
+                </p>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="text-center max-w-xs">
+                <div
+                  style={{ background: "rgba(255,255,255,0.1)", backdropFilter: "blur(4px)" }}
+                  className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+                >
+                  <Users className="w-8 h-8 text-[#A3DE23]" />
+                </div>
+
+                <p className="text-white font-semibold text-base">
+                  Professional Drivers
+                </p>
+
+                <p className="text-slate-300 text-sm mt-2">
+                  Experienced and vetted drivers
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
         </>
       ) : (
         /* Results */

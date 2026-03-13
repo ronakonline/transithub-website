@@ -8,7 +8,7 @@ export default {
     extend: {
       fontFamily: {
         arial: ['Arial', 'sans-serif'],
-        serif: ['Merriweather', 'serif'],
+        outfit: ['Outfit', 'sans-serif'],
       },
     },
   },
